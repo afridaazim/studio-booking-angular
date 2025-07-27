@@ -1,0 +1,26 @@
+<table class="table table-bordered table-hover mt-3">
+  <thead class="table-light">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Studio ID</th>
+    <th>Type</th>
+    <th>Date</th>
+    <th>Time Slot</th>
+    <th>Area</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let booking of bookings">
+    <td>{{ booking.name }}</td>
+    <td>{{ booking.email }}</td>
+    <td>{{ booking.studioId }}</td>
+    <td>{{ booking.type }}</td>
+    <td>{{ booking.date }}</td>
+    <td>{{ booking.timeSlot }}</td>
+    <td>{{ booking.location?.area }}</td>
+
+  </tr>
+  </tbody>
+</table>

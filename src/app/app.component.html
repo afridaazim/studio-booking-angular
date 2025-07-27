@@ -1,0 +1,10 @@
+<!-- src/app/app.component.html -->
+<nav class="navbar navbar-expand navbar-light bg-light px-3">
+  <a class="navbar-brand" href="/">Studio Booking</a>
+  <div class="navbar-nav">
+    <a class="nav-link" routerLink="/studios" [routerLinkActive]="'active'">Studios</a>
+    <a class="nav-link" routerLink="/bookings" [routerLinkActive]="'active'">Bookings</a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
