@@ -1,3 +1,30 @@
+<!--<div *ngIf="studio" class="modal d-block">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content p-4">-->
+<!--      <div class="modal-header">-->
+<!--        <h4>Book: {{ studio.name }}</h4>-->
+<!--        <button class="btn-close" (click)="closeModal()"></button>-->
+<!--      </div>-->
+
+<!--      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">-->
+<!--        <input formControlName="name" placeholder="Name" required="true" class="form-control mb-2">-->
+<!--        <input formControlName="email" placeholder="Email" required class="form-control mb-2">-->
+<!--        <input type="date" formControlName="date" required class="form-control mb-2">-->
+<!--        <select formControlName="timeSlot" required class="form-control mb-2">-->
+<!--          <option value="" disabled selected>Select slot</option>-->
+<!--          <option *ngFor="let slot of studio.availableSlots" [value]="slot">{{ slot }}</option>-->
+<!--        </select>-->
+
+<!--        <button class="btn btn-success" type="submit">Confirm Booking</button>-->
+<!--      </form>-->
+
+<!--      <p class="text-success mt-2" *ngIf="successMessage">{{ successMessage }}</p>-->
+<!--      <p class="text-danger mt-2" *ngIf="errorMessage">{{ errorMessage }}</p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
 <div *ngIf="studio" class="modal d-block">
   <div class="modal-dialog">
     <div class="modal-content p-4">
@@ -7,15 +34,24 @@
       </div>
 
       <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
-        <input formControlName="name" placeholder="Name" class="form-control mb-2">
-        <input formControlName="email" placeholder="Email" class="form-control mb-2">
-        <input type="date" formControlName="date" class="form-control mb-2">
-        <select formControlName="timeSlot" class="form-control mb-2">
-          <option value="" disabled selected>Select slot</option>
+        <label class="form-label">Name <span class="text-danger">*</span></label>
+        <input formControlName="name" placeholder="Name" required class="form-control mb-2">
+
+        <label class="form-label">Email <span class="text-danger">*</span></label>
+        <input formControlName="email" placeholder="Email" required class="form-control mb-2" type="email">
+
+        <label class="form-label">Date <span class="text-danger">*</span></label>
+        <input type="date" formControlName="date" required class="form-control mb-2">
+
+        <label class="form-label">Time Slot <span class="text-danger">*</span></label>
+        <select formControlName="timeSlot" required class="form-control mb-2">
+          <option value="" disabled>Select slot</option>
           <option *ngFor="let slot of studio.availableSlots" [value]="slot">{{ slot }}</option>
         </select>
 
-        <button class="btn btn-success" type="submit">Confirm Booking</button>
+        <button class="btn btn-success" type="submit" [disabled]="bookingForm.invalid">
+          Confirm Booking
+        </button>
       </form>
 
       <p class="text-success mt-2" *ngIf="successMessage">{{ successMessage }}</p>
